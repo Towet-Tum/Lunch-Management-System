@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron mt-5">
+        <h1 class="display-4">Welcome to the Company Restaurant System!</h1>
+        <p class="lead">Book your lunch effortlessly and enjoy a delightful dining experience.</p>
+        <hr class="my-4">
+        <p>Use the navigation bar above to access the staff portal, book lunch, and view your bookings.</p>
+        {% if user.is_authenticated %}
+            <a class="btn btn-primary btn-lg" href="{% url 'book_lunch' %}" role="button">Book Lunch</a>
+            {% if user.is_staff %}
+                <a class="btn btn-secondary btn-lg" href="{% url 'lunch_booking_list' %}" role="button">View Bookings</a>
+            {% endif %}
+        {% else %}
+            <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login to Portal</a>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Daily Specials</h3>
+            <p>Check out our daily specials, curated to tantalize your taste buds and offer a variety of flavors.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Healthy Options</h3>
+            <p>Explore our healthy options menu, designed to provide nutritious and delicious meals.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Contact Us</h3>
+            <p>Have any questions or feedback? Reach out to us, and we’ll be happy to assist you.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

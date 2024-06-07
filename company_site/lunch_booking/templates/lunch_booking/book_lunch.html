@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Lunch{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">Book Lunch for Tomorrow</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Book Lunch</button>
+    </form>
+    <a href="{% url 'user_bookings' %}" class="btn btn-secondary mt-3">Bookings</a>
+</div>
+{% endblock %}

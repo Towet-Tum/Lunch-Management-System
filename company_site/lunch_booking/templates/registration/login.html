@@ -1,0 +1,83 @@
+<!-- login.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card bg-transparent">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Login</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="username" class="form-control rounded-pill border-white" placeholder="Username" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control rounded-pill border-white" placeholder="Password" required>
+                        </div>
+                        {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                Invalid username or password. Please try again.
+                            </div>
+                        {% endif %}
+                        <button type="submit" class="btn btn-primary btn-block rounded-pill" style="background-color: #009879; border-color: #009879;">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="overlay"></div>
+{% endblock %}
+
+{% block css %}
+<style>
+    body {
+        background-image: url('{% static "img/background.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    .bg-transparent {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .border-white {
+        border-color: #fff !important;
+    }
+
+    .btn-primary {
+        background-color: #009879;
+        border-color: #009879;
+    }
+
+    .btn-primary:hover {
+        background-color: #007f67;
+        border-color: #007f67;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+
+    .form-control {
+        background-color: #f3f3f3;
+        border: 1px solid #ddd;
+    }
+</style>
+{% endblock %}
