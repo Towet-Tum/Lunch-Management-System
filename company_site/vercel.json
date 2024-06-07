@@ -12,9 +12,7 @@
     "routes": [
         { "src": "/admin/(.*)", "dest": "company_site/wsgi.py" },
         { "src": "/lunch_booking/(.*)", "dest": "company_site/wsgi.py" },
-        { "src": "/login/(.*)", "dest": "company_site/wsgi.py" }
-    ],
-    "rewrites": [
-        { "source": "/(.*)", "destination": "/lunch_booking/$1" }
+        { "src": "/login/(.*)", "dest": "company_site/wsgi.py" },
+        { "src": "/(.*)", "dest": "company_site/wsgi.py" }
     ]
 }
