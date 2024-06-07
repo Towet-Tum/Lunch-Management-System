@@ -5,15 +5,16 @@
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
-                "runtime": "python3.12",
-                "buildCommand": "pip install -r requirements.txt"
+                "runtime": "python3.12"
             }
         }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "company_site/wsgi.py"
-        }
+        { "src": "/admin/(.*)", "dest": "company_site/wsgi.py" },
+        { "src": "/lunch_booking/(.*)", "dest": "company_site/wsgi.py" },
+        { "src": "/login/(.*)", "dest": "company_site/wsgi.py" }
+    ],
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/lunch_booking/$1" }
     ]
 }
